@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻译对照组件使用示例</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="translation-component.css">
+</head>
+<body>
+    <!-- 返回按钮 - 与右上角隐藏按钮对称 -->
+    <button id="backBtn" class="toggle-btn show" onclick="window.history.back()" style="left: 0.75rem; right: auto;">
+        <i class="fa fa-arrow-left"></i><span>返回</span>
+    </button>
+    
+    <!-- 隐藏/显示按钮 -->
+    <button id="toggleBtn" class="toggle-btn show">
+        <i class="fa fa-eye"></i><span>隐藏</span>
+    </button>
+    
+    <div class="translation-container">
+        <div class="section-title">
+            <h1>001-示例标题</h1>
+            <p>原文与翻译对照 - 点击右上角按钮切换翻译显示</p>
+        </div>
+        <video-link title="原视频" url="#">
+        </video-link>
+
+        <div class="content-wrapper" id="contentWrapper">
+            <!-- 使用自定义组件 -->
+            <translation-block 
+                original="First, solve the problem. Then, write the code." 
+                translation="首先解决问题，然后再编写代码。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block 
+                original="Code is like humor. When you have to explain it, it’s bad." 
+                translation="代码就像幽默。当你需要解释它时，它就不好笑了。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block 
+                original="Any fool can write code that a computer can understand. Good programmers write code that humans can understand." 
+                translation="任何傻瓜都能写出计算机能理解的代码。好的程序员写出的代码人类能理解。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block 
+                original="The best way to predict the future is to invent it." 
+                translation="预测未来的最好方法就是去创造它。">
+            </translation-block>
+        </div>
+    </div>
+
+
+
+    <!-- 引入组件JavaScript -->
+    <script src="translation-component.js"></script>
+    <!-- 注：在实际使用中，需要根据文件层级调整引用路径，例如：
+         <script src="../components/translation-component.js"></script> -->
+    <script>
+        // 页面加载完成后初始化翻译切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 默认参数使用contentWrapper和toggleBtn作为ID
+            initTranslationToggle();
+            
+            // 也可以自定义ID，例如：
+            // initTranslationToggle('customContentWrapper', 'customToggleBtn');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻译对照组件（功能修复版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="translation-component.css">
+</head>
+<body>
+    <div class="translation-container">
+        <div class="section-title">
+            <h1>原文翻译对照</h1>
+            <p>点击右上角按钮切换翻译显示</p>
+        </div>
+
+        <div class="content-wrapper" id="contentWrapper">
+            <!-- 自定义组件使用示例 -->
+            <translation-block 
+                original="The greatest glory in living lies not in never falling, but in rising every time we fall."
+                translation="生命中最大的荣耀不在于永不跌倒，而在于每次跌倒后都能站起来。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block 
+                original="In the end, it's not the years in your life that count. It's the life in your years."
+                translation="最终，重要的不是你生命中的岁月，而是你岁月中的生命。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block 
+                original="Life is what happens when you're busy making other plans."
+                translation="生活就是当你忙于制定其他计划时发生的事情。">
+            </translation-block>
+        </div>
+    </div>
+
+    <!-- 悬浮切换按钮 -->
+    <button id="toggleBtn" class="toggle-btn show">
+        <i class="fa fa-eye"></i>
+        <span>隐藏</span>
+    </button>
+
+    <script src="translation-component.js"></script>
+    <script>
+        // 页面加载完成后初始化翻译切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            initTranslationToggle();
+        });
+    </script>
+</body>
+</html>

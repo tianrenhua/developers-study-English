@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后端开发概述 - 翻译对照</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../components/translation-component.css">
+</head>
+
+<body>
+    <!-- 返回按钮 - 与右上角隐藏按钮对称 -->
+    <button id="backBtn" class="back-button show" onclick="window.history.back()"
+        style="position: fixed; top: 0.75rem; left: 0.75rem;">
+        <i class="fa fa-arrow-left"></i><span>返回</span>
+    </button>
+
+    <!-- 隐藏/显示按钮 -->
+    <button id="toggleBtn" class="toggle-btn show">
+        <i class="fa fa-eye"></i><span>隐藏</span>
+    </button>
+    </script>
+
+    <div class="translation-container">
+        <div class="section-title">
+            <h1>001-后端开发概述</h1>
+            <p>原文与翻译对照 - 点击右上角按钮切换翻译显示</p>
+        </div>
+        <video-link title="原视频"
+            url="https://www.youtube.com/watch?v=XBu54nfzxAQ&list=PL7Qmhbpgt5jsMF2Z_hKMnCmvbU_vK21-S">
+        </video-link>
+
+        <div class="content-wrapper" id="contentWrapper">
+
+            <!-- 翻译对照内容 -->
+            <translation-block original="Every website can be split up into two parts, the front end and the backend."
+                translation="每个网站都可以分为两部分，前端和后端。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The front end is all the visual stuff you see on the webpage and the backend is what saves and manages your data."
+                translation="前端是你在网页上看到的所有视觉内容，而后端则是保存和管理数据的部分。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="For example, if you are on amazon.com, the backend would store your order history, your profile."
+                translation="例如，如果你在亚马逊网站上，后端会存储你的订单历史、个人资料等信息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="It would load search results and much more." translation="它会加载搜索结果以及更多内容。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="In this video, we're going to take a look at the technologies that are used in the backend of a website and in another video we explore the front end technologies."
+                translation="在这个视频中，我们将了解网站后端使用的技术，在另一个视频中我们将探索前端技术。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="As an example, let's say that we're on amazon.com and we do some shopping, and now we're ready to make an order."
+                translation="举个例子，假设我们在亚马逊网站上购物，现在准备下单。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="When I click place order, what happens, we're going to start from the ground up."
+                translation="当我点击下单按钮时，会发生什么？我们将从头开始了解。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Any computer that's connected to the internet, including your computer and my computer, can send a message across the internet to another computer that's also connected to the internet."
+                translation="任何连接到互联网的计算机，包括你的电脑和我的电脑，都可以通过互联网向另一台也连接到互联网的计算机发送消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So to simplify things, Amazon has a computer in their office building somewhere, and our computer is going to send a message continuing our order to that Amazon computer."
+                translation="为了简化说明，亚马逊在他们的办公楼某处有一台计算机，我们的计算机将向那台亚马逊计算机发送包含我们订单的消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="In this scenario, the computer that is sending the message is called the client, and the computer that is receiving the message is called the server."
+                translation="在这种情况下，发送消息的计算机被称为客户端，接收消息的计算机被称为服务器。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="But before this happens, computers, they can't receive messages from the internet by default."
+                translation="但在这之前，默认情况下，计算机无法从互联网接收消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="We have to program them to be able to receive messages."
+                translation="我们必须对它们进行编程，使它们能够接收消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="To do that, we need a backend programming language."
+                translation="为此，我们需要一种后端编程语言。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Almost every programming language has a feature that turns a computer into a server and allows it to receive messages."
+                translation="几乎每种编程语言都有一个功能，可以将计算机变成服务器并允许它接收消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Popular backend programming languages are JavaScript, sometimes called node js, Python, Ruby, and Java."
+                translation="流行的后端编程语言有JavaScript（有时称为Node.js）、Python、Ruby和Java。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="However, using a backend programming language by itself is actually really difficult and requires a huge amount of code."
+                translation="然而，仅使用后端编程语言实际上非常困难，需要大量代码。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So there are two tools that we use to help with this."
+                translation="因此，我们使用两种工具来帮助解决这个问题。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="A backend framework and a package manager, a backend framework helps us create a server much easier and with a lot less code."
+                translation="一个是后端框架，另一个是包管理器。后端框架帮助我们更容易地创建服务器，并且代码量少得多。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Each backend programming language has a few different frameworks to choose from, but the most popular ones are Express JS for JavaScript, Python, Django, Rubion Rails, and Java Spring."
+                translation="每种后端编程语言都有几个不同的框架可供选择，但最受欢迎的是JavaScript的Express JS、Python的Django、Ruby的Rails和Java的Spring。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="In the backend, we also use a lot of code that other people have written called packages to do common tasks like doing calculations, talking to a database, and setting up user login and authentication."
+                translation="在后端，我们还使用大量其他人编写的代码，称为包，用于执行常见任务，如计算、与数据库通信以及设置用户登录和身份验证。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="We typically use a lot of packages in our backend, and in order to install and manage all these packages, we use something called a package manager."
+                translation="我们通常在后端使用大量包，为了安装和管理所有这些包，我们使用一种称为包管理器的工具。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Each language has its own package manager." translation="每种语言都有自己的包管理器。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The most popular ones are NPM for JavaScript, PIP for Python, bundler for Ruby, and Maven for Java."
+                translation="最受欢迎的是JavaScript的NPM、Python的PIP、Ruby的bundler和Java的Maven。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="These are all the technologies we need to create our backend server."
+                translation="这些是我们创建后端服务器所需的所有技术。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The next problem we have is we need somewhere to save the data for our website."
+                translation="我们面临的下一个问题是，我们需要一个地方来保存网站的数据。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Going back to our Amazon example, data could mean our user data, like the login information, order, history, as well as data for all the products that are being sold on Amazon, the descriptions, the ratings, and the Reviews."
+                translation="回到我们的亚马逊示例，数据可能意味着用户数据，如登录信息、订单历史，以及亚马逊上销售的所有产品的数据，包括描述、评分和评论。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="To do this, we use a database." translation="为此，我们使用数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="A database helps us store and manage data." translation="数据库帮助我们存储和管理数据。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="It's just a piece of software that usually runs on a different computer,"
+                translation="它只是一个通常在不同计算机上运行的软件。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="and we have to do some setups so that our backend can communicate with the database."
+                translation="我们必须进行一些设置，以便我们的后端可以与数据库通信。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="The most popular databases are MySQL, Postgres, and MongoDB."
+                translation="最受欢迎的数据库是MySQL、Postgres和MongoDB。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="All right, so if you're just starting out, this is basically all you need for the backend."
+                translation="好的，所以如果你刚刚开始，这基本上就是你后端所需的全部。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="You can build most of your projects with just a server and a database."
+                translation="你可以只用服务器和数据库构建大多数项目。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="For example, here's how our Amazon scenario could work."
+                translation="例如，这是我们的亚马逊场景可能的工作方式。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="When the customer places an order in the front end, the front end sends a message containing the order to the backend."
+                translation="当客户在前端下单时，前端向后端发送包含订单的消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The backend then saves the order to a database and sends back a message to the front end confirming that the order was created."
+                translation="然后后端将订单保存到数据库，并向前端发送确认订单已创建的消息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The message that the front end sends to the backend is known as a request, and the message that the backend sends back is known as a response."
+                translation="前端发送给后端的消息称为请求，后端发送回来的消息称为响应。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="This is called a request response cycle, and this is generally how web applications work."
+                translation="这称为请求-响应周期，这通常是Web应用程序的工作方式。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Here's another example." translation="这里还有一个例子。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Let's say that you're in the Amazon warehouse." translation="假设你在亚马逊仓库里。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The warehouse might have a different front end that sends a request to the backend to get our order."
+                translation="仓库可能有一个不同的前端，它向后端发送请求以获取我们的订单。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The backend then gets our order from the database and sends it back to the warehouse front end, and then they go ahead and prepare our order."
+                translation="然后后端从数据库中获取我们的订单，并将其发送回仓库前端，然后他们继续准备我们的订单。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Now that we've seen the overall flow, we're going to dive deeper and take a look at what's inside a request."
+                translation="现在我们已经看到了整体流程，我们将深入了解请求内部的内容。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Here's a simplified example of a request to create an Amazon order."
+                translation="这是创建亚马逊订单请求的简化示例。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="If we read over it, we can see that it's actually really easy to understand."
+                translation="如果我们仔细阅读，会发现它实际上非常容易理解。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="We have the items that we ordered, the quantities and some other information about our Amazon order."
+                translation="我们有订购的商品、数量以及关于我们亚马逊订单的其他一些信息。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="At the top, we have the type of the request, the domain name, and the URL path."
+                translation="在顶部，我们有请求的类型、域名和URL路径。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="This describes where this request is going and what type of request This is."
+                translation="这描述了这个请求的去向以及这是什么类型的请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="First of all, Amazon. The company has bought the domain name amazon.com, and they configured it so that any request going to amazon.com will be redirected to that server in their office building."
+                translation="首先，亚马逊公司购买了amazon.com域名，并对其进行配置，使任何发送到amazon.com的请求都将被重定向到他们办公楼中的那台服务器。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So that's why we're sending this request to amazon.com."
+                translation="这就是为什么我们向amazon.com发送这个请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="The type and the URL path. Identify what kind of request this is."
+                translation="类型和URL路径标识这是什么类型的请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So in this example, this is a post request to slash orders."
+                translation="所以在这个例子中，这是一个到/orders的POST请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="In the backend, we use our programming language and backend framework to define what types of requests are allowed and how we should handle these requests."
+                translation="在后端，我们使用编程语言和后端框架来定义允许哪些类型的请求以及我们应该如何处理这些请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="For example, we can allow a post slash orders request, and whenever we get a post slash orders request, we will create an order using our programming language and save it to our database."
+                translation="例如，我们可以允许POST /orders请求，每当我们收到POST /orders请求时，我们将使用编程语言创建订单并将其保存到我们的数据库中。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="We can also allow a get slash order request, and in this case, we will retrieve the order history from the database and send it back as a response."
+                translation="我们还可以允许GET /order请求，在这种情况下，我们将从数据库中检索订单历史并将其作为响应发送回去。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Another example is a delete slash order request where we will cancel the order."
+                translation="另一个例子是DELETE /order请求，我们将在其中取消订单。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So this list of all the different types of requests that the backend allows is called an a API application programming interface."
+                translation="所以后端允许的所有不同类型请求的列表被称为API（应用程序编程接口）。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="The API is one of the most important concepts in backend programming."
+                translation="API是后端编程中最重要的概念之一。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="If you send a request that is not allowed by the api, the backend will respond with an error."
+                translation="如果你发送一个API不允许的请求，后端将响应错误。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So we mentioned earlier that we can identify requests using a type and a URL path."
+                translation="所以我们之前提到过，我们可以使用类型和URL路径来标识请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="There are several types we can choose from, such as post get, put and delete, and the URL path can be anything we want."
+                translation="我们可以选择几种类型，如POST、GET、PUT和DELETE，URL路径可以是我们想要的任何东西。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So why in this example do we choose post slash orders?"
+                translation="那么为什么在这个例子中我们选择POST /orders？">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="This is just a naming convention for our requests, and this naming convention is called rest representational state transfer."
+                translation="这只是我们请求的命名约定，这个命名约定称为REST（表述性状态转移）。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="In rest, the type of the request has a special meaning."
+                translation="在REST中，请求的类型有特殊的含义。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So post means to create something, and in this case, post slash orders means to create an order, get means to get something, and delete means to delete something and so on."
+                translation="所以POST意味着创建某些东西，在这种情况下，POST /orders意味着创建订单，GET意味着获取某些东西，DELETE意味着删除某些东西，等等。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="An API that uses the REST naming convention is called a REST api."
+                translation="使用REST命名约定的API称为REST API。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="REST is the most common convention that we use for our APIs, but there are several other conventions that we could use."
+                translation="REST是我们用于API的最常见约定，但我们也可以使用其他几种约定。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="One of them is called GraphQL, which uses Post slash GraphQL for all of our requests, and another one is called rpc, which uses post and a more detailed D URL path, like post slash create order or post slash get order history."
+                translation="其中之一称为GraphQL，它对所有请求都使用POST /graphql，另一个称为RPC，它使用POST和更详细的URL路径，如POST /create-order或POST /get-order-history。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So that is what a request is when an API is and what rest means."
+                translation="这就是请求是什么，API是什么，以及REST是什么意思。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Now, let's talk about infrastructure nowadays." translation="现在，让我们谈谈当今的基础设施。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Instead of company's purchasing their own computers to run their websites, they rent computers from a cloud computing company."
+                translation="公司不再购买自己的计算机来运行网站，而是从云计算公司租用计算机。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The biggest cloud computing companies are aws, Amazon Web Services, gcp, Google Cloud platform, and Microsoft Azure."
+                translation="最大的云计算公司是AWS（亚马逊网络服务）、GCP（谷歌云平台）和Microsoft Azure。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="The basic idea of cloud computing is you're renting a bunch of computers."
+                translation="云计算的基本理念是租用一堆计算机。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="This is also known as IAS infrastructure as a service."
+                translation="这也被称为IaaS（基础设施即服务）。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Behind the scenes, AWS has a giant powerful computer, and inside its software, it's running many smaller computers, and we're actually renting one of these smaller computers, and these smaller computers only exist in these software, so we call them virtual machines or VMs."
+                translation="在幕后，AWS有一台强大的巨型计算机，在其软件内部，它运行着许多较小的计算机，而我们实际上是在租用其中一台较小的计算机，这些较小的计算机只存在于这些软件中，所以我们称它们为虚拟机（VM）。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So to run our website, we rent a VM from AWS to run our backend, and we also rent another VM to run our database."
+                translation="所以为了运行我们的网站，我们从AWS租用一个VM来运行我们的后端，我们还租用另一个VM来运行我们的数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Another problem we have to solve is what if our website gets really popular during the holiday season and we start getting a lot of requests and internet traffic that our server can't handle."
+                translation="我们必须解决的另一个问题是，如果我们的网站在假日季节变得非常受欢迎，我们开始收到大量请求和互联网流量，而我们的服务器无法处理。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="With cloud computing, we can set up multiple VMs running these same backend code and then set up a special VM in front of these called a load balancer, and the load balancer will distribute requests evenly across our VMs."
+                translation="通过云计算，我们可以设置多个运行相同后端代码的VM，然后在这些VM前面设置一个称为负载均衡器的特殊VM，负载均衡器将在我们的VM之间均匀分布请求。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Once a holiday season is over, we can just shut off our VMs when we don't need them."
+                translation="一旦假日季节结束，我们可以在不需要时关闭我们的VM。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="This is a lot easier than having to buy physical computers where if the holiday season is over, you still have the physical computers that you paid for, but we still have another problem."
+                translation="这比必须购买物理计算机要容易得多，因为如果假日季节结束，你仍然拥有你付费购买的物理计算机，但我们仍然有另一个问题。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="We now have a lot of VMs that we need to create and set up, and it takes a lot of time and effort."
+                translation="我们现在有很多VM需要创建和设置，这需要大量时间和精力。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Cloud computing companies offer another service called a PAs a platform As a service, a PAs just lets us upload our backend code."
+                translation="云计算公司提供另一种服务，称为PaaS（平台即服务），PaaS只是让我们上传我们的后端代码。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="It will set up all the VMs including the load balancer, and integrate everything for us."
+                translation="它将设置所有VM（包括负载均衡器），并为我们集成所有内容。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="The three most popular paths are Elastic Beanstalk for AWS App Engine for GCP and App Service for Microsoft Azure."
+                translation="最受欢迎的三个PaaS是AWS的Elastic Beanstalk、GCP的App Engine和Microsoft Azure的App Service。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="The next concept we're going to look at is microservices."
+                translation="我们接下来要了解的概念是微服务。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="For our Amazon example, let's say that our backend contains code that saves an order to the database, charges the user's credit card, and sends an email confirmation."
+                translation="对于我们的亚马逊示例，假设我们的后端包含将订单保存到数据库、向用户的信用卡收费以及发送电子邮件确认的代码。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="In the real world, this backend can be millions of lines of code."
+                translation="在现实世界中，这个后端可能有数百万行代码。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So we split this up into three code bases." translation="因此，我们将其拆分为三个代码库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Then each of these code bases will have their own backend, each with the load balancer and sometimes their own database."
+                translation="然后，每个代码库都将有自己的后端，每个后端都有负载均衡器，有时还有自己的数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Then when we need to send an email, our orders backend will send a request to the email backend, which will send the email."
+                translation="然后，当我们需要发送电子邮件时，我们的订单后端将向电子邮件后端发送请求，电子邮件后端将发送电子邮件。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So splitting up our backend into separate backends like this is called microservices, and it helps keep our code base smaller and more focused."
+                translation="因此，将我们的后端拆分为像这样的单独后端称为微服务，它有助于保持我们的代码库更小、更专注。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Each microservice does not have to use the same programming language and database."
+                translation="每个微服务不必使用相同的编程语言和数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="One microservice can be using JavaScript and MongoDB while another microservice can be using Python and MySQL."
+                translation="一个微服务可以使用JavaScript和MongoDB，而另一个微服务可以使用Python和MySQL。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Now, to make this even easier, there are companies out there like Twilio who have already created an email service."
+                translation="现在，为了让这更容易，有些公司（如Twilio）已经创建了电子邮件服务。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So Twilio provides a backend and an API for sending emails."
+                translation="因此，Twilio提供了用于发送电子邮件的后端和API。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So instead of us creating our own email microservice, our backend can just send requests to Twilio's backend."
+                translation="因此，我们不必创建自己的电子邮件微服务，我们的后端只需向Twilio的后端发送请求即可。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="When a company provides a backend and an API that outside applications can use, this is called a SaaS, software as a service."
+                translation="当公司提供外部应用程序可以使用的后端和API时，这被称为SaaS（软件即服务）。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Pretty much everything you do in the backend that's complicated."
+                translation="你在后端做的几乎所有复杂的事情。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="This probably a SaaS company out there that already provides that service, and you can just use that service instead of building your own microservice."
+                translation="可能有一家SaaS公司已经提供了该服务，你可以直接使用该服务，而不是构建自己的微服务。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So these three concepts we just looked at, infrastructure as a service, platforms as a service, and software as a service are the three foundations of cloud computing."
+                translation="所以我们刚刚看到的这三个概念——基础设施即服务、平台即服务和软件即服务——是云计算的三个基础。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="These days, most companies use cloud computing to run the backend for their websites instead of buying and managing physical servers themselves."
+                translation="如今，大多数公司使用云计算来运行其网站的后端，而不是自己购买和管理物理服务器。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="In this last section, I want to introduce some additional technologies you might see in the backend."
+                translation="在最后一节中，我想介绍一些你可能会在后端看到的其他技术。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Previously, we mentioned the databases, MySQL, Postgres, and MongoDB."
+                translation="之前，我们提到了数据库MySQL、Postgres和MongoDB。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="These are sometimes called primary databases because they're the main database that our website uses."
+                translation="这些有时被称为主数据库，因为它们是我们网站使用的主要数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Generally, we start our backend with a server and a primary database and then bring in these additional technologies if we need to, if we allow our users to upload images."
+                translation="通常，我们以服务器和主数据库开始我们的后端，如果需要，然后引入这些额外的技术，例如，如果我们允许用户上传图像。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="A primary database is not good for storing images, so we would use a blob store like aws, s3, and a CDN like CloudFront to store and load user uploaded images if we want to allow text search."
+                translation="主数据库不适合存储图像，所以我们会使用像AWS S3这样的Blob存储和像CloudFront这样的CDN来存储和加载用户上传的图像，如果我们想允许文本搜索。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="Primary databases are very slow at text search, so we would bring in a search database like Elastic Search."
+                translation="主数据库在文本搜索方面非常慢，所以我们会引入像ElasticSearch这样的搜索数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="If our website is getting a lot of traffic and we need to take some stress off our primary database, we would add a cache like Redis to improve performance."
+                translation="如果我们的网站获得了大量流量，我们需要减轻主数据库的压力，我们会添加像Redis这样的缓存来提高性能。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="If. We want to do data science, we don't want to do the data analysis using our primary database."
+                translation="如果我们想做数据科学，我们不想使用主数据库进行数据分析。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="It's busy running our website." translation="它正忙着运行我们的网站。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="So we would copy all of our data into an analytical database like Snowflake, which is really good for doing data science on the side."
+                translation="因此，我们会将所有数据复制到像Snowflake这样的分析数据库中，这非常适合在旁边进行数据科学。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="If you want to schedule a task for later." translation="如果你想为以后安排任务。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="For example, Amazon might want to email their users before their Amazon Prime subscription renews."
+                translation="例如，亚马逊可能想在用户的Amazon Prime订阅续订前给他们发邮件。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="We would use a job queue like Rabbit MQ to schedule this task for the future, and there's a bunch more technologies like these out there that are made to solve specific problems."
+                translation="我们会使用像RabbitMQ这样的作业队列来安排未来的这项任务，还有更多像这样的技术专门用于解决特定问题。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="So these are all the backend technologies that we covered in this video."
+                translation="这些就是我们在这个视频中介绍的所有后端技术。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="If you're just starting out, you mostly just need to know how to use cloud computing, a backend framework in a primary database."
+                translation="如果你刚刚开始，你主要只需要知道如何使用云计算、一个后端框架和一个主数据库。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="These other technologies are things that you may or may not use."
+                translation="这些其他技术是你可能会也可能不会使用的东西。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="You would add them to your backend depending on what kind of website and features you're trying to make."
+                translation="你会根据你要创建的网站类型和功能将它们添加到你的后端。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="Thanks for watching." translation="感谢观看。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="My name is Simon from Super simple.dev."
+                translation="我是Simon，来自Super simple.dev。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block original="I want to make a tech career possible for anyone."
+                translation="我想让任何人都能拥有技术职业。">
+            </translation-block>
+
+            <div class="divider"></div>
+
+            <translation-block
+                original="If you have any questions or comments, please leave them down below and I'll see you in the next one."
+                translation="如果你有任何问题或评论，请在下面留言，我们下次再见。">
+            </translation-block>
+        </div>
+    </div>
+
+    <!-- 引入组件JavaScript -->
+    <script src="../components/translation-component.js"></script>
+    <script>
+        // 页面加载完成后初始化翻译切换功能
+        document.addEventListener('DOMContentLoaded', function () {
+            // 默认参数使用contentWrapper和toggleBtn作为ID
+            initTranslationToggle();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>听力学习主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- 顶部导航栏 - 简约清新风格 -->
+    <header class="bg-gradient-to-r from-blue-200 to-blue-300 text-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-center items-center">
+                <h1 class="text-2xl font-semibold flex items-center">
+                    <i class="fa fa-headphones mr-2"></i>程序员听力学习资源
+                </h1>
+                <!-- <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="#" class="hover:text-emerald-100 transition-colors"><i class="fa fa-home mr-1"></i>主页</a></li>
+                        <li><a href="#" class="hover:text-emerald-100 transition-colors"><i class="fa fa-book mr-1"></i>课程</a></li>
+                        <li><a href="components/example.html" class="hover:text-emerald-100 transition-colors"><i class="fa fa-code mr-1"></i>组件</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- 文件列表 -->
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">文件列表</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <table class="w-full text-left">
+                    <thead class="border-b">
+                        <tr>
+                            <th class="py-3 px-4 font-semibold text-gray-600">文件编号</th>
+                            <th class="py-3 px-4 font-semibold text-gray-600">标题</th>
+                            <th class="py-3 px-4 font-semibold text-gray-600">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-4 px-4 text-blue-600 font-medium">001</td>
+                            <td class="py-4 px-4">后端开发概述</td>
+                            <td class="py-4 px-4">
+                                <div class="flex space-x-2">
+                                    <a href="lessons/001.html" class="text-blue-600 hover:text-blue-800"><i class="fa fa-eye mr-1"></i> 查看</a>
+                                    <!-- <span>|</span>
+                                    <a href="lessons/001-Original.txt" class="text-gray-600 hover:text-gray-800"><i class="fa fa-file-text-o mr-1"></i> 原文</a> -->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 - 简约清新风格 -->
+    <footer class="bg-blue-50 border-t border-blue-100 py-6">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-blue-800">
+                <p class="mb-2"><i class="fa fa-leaf mr-1"></i>听力学习资源导航</p>
+                <p class="text-sm text-blue-600">© 2025 学习助手 - 让英语学习更高效</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
