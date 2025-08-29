@@ -1,0 +1,325 @@
+Every website can be split up into two
+
+parts: the frontend and the backend.
+
+The frontend is all the visual stuff
+
+you see on the web page: the images, the
+
+text, the buttons, and the backend is
+
+what saves and manages your data, for
+
+example your amazon order history. In
+
+this video I'm going to explain all the
+
+technologies that are used in the front
+
+end of a web application, and in another
+
+video we'll explore the backend let's
+
+get started.
+
+We're going to start with a blank web
+
+page and the first technology we're
+
+going to look at is html. html stands for
+
+hyper text markup language and is used
+
+to add content to our web page. For
+
+example, I can write this bit of html to
+
+add a button.
+
+I can also add other types of content,
+
+like images, and text and if I write more
+
+html, it will add more content to my page.
+
+But you'll notice that our page doesn't
+
+look very good. That's where css comes in.
+
+css stands for cascading style sheets,
+
+and based on the name, it's used to style
+
+our web page, so it's used to make our
+
+web page look good, by letting us adjust
+
+colors, sizes, spacing, things like that.
+
+Let's add some css to our page.
+
+So now that looks much better, but we're
+
+not done here.
+
+Let's say that I want to filter these
+
+products, and only show one brand of
+
+shoes, so I click this checkbox.
+
+But you'll notice that nothing happens
+
+and this is where javascript comes in.
+
+html and css only display things on our
+
+web page, but javascript is what makes
+
+our web page interactive.
+
+So for example, when we click something,
+
+and type something, a bit of javascript
+
+code will update the page based on what
+
+we did.
+
+The most important feature of javascript
+
+is something called the document object
+
+model, or the dom.
+
+The dom allows javascript to change the
+
+web page.
+
+For example, this bit of javascript code
+
+uses the dom to change the text in the
+
+button.
+
+And this is how javascript makes pages
+
+interactive.
+
+However, using the dom directly like this
+
+is really repetitive, and hard to manage
+
+and that's why we use a javascript
+
+framework.
+
+Javascript frameworks give us a much
+
+nicer way to create our web page, and
+
+they take care of updating the page for
+
+us, so we never use the dom directly
+
+anymore.
+
+The most popular ones are react.js,
+
+angular, and vue.js.
+
+Now let's take a step back, and look at
+
+javascript again.
+
+Javascript as a language is missing a
+
+lot of features that other programming
+
+languages have.
+
+One of these features is being able to
+
+split up our code into different files,
+
+and to organize our code.
+
+To solve this we have to use something
+
+called a bundler. The most popular one
+
+you've probably heard of is called
+
+webpack.
+
+Webpack lets us split up our javascript
+
+code into many different files, and once
+
+we're ready to put it on our website,
+
+webpack will combine all of these files,
+
+or bundle all of these files into one
+
+javascript file that we can put on our
+
+website.
+
+Another tool that we use is called a
+
+transpiler. The most popular one you
+
+probably heard of is called typescript.
+
+A transpiler adds extra features onto
+
+javascript. It lets us write an enhanced
+
+version of javascript, and then once
+
+we're done it will transform the
+
+enhanced javascript back into normal
+
+javascript because browsers like google
+
+chrome can only understand normal
+
+javascript.
+
+So those are the major technologies in
+
+the javascript world.
+
+Now we're going to move over to css.
+
+css as a language has the same problems
+
+as javascript. We can't organize our code
+
+into different files, and css is missing
+
+a lot of useful features, so we also use
+
+a bundler and a transpiler for css.
+
+There's a special name for this called a
+
+css preprocessor. It's basically the
+
+combination of a bundler and a
+
+transpiler. The most popular css
+
+preprocessor you probably heard of is
+
+called sass.
+
+sass lets us organize our css into
+
+different files, and it lets us write
+
+enhanced css,
+
+and then it will bundle all those files
+
+together into one file, and it will
+
+transform the enhanced css back into
+
+normal css. So you can think of it sort
+
+of like a bundler and a transpiler
+
+combined. Now, once we had css
+
+preprocessors, developers start to create
+
+css frameworks, the most popular one
+
+being bootstrap.
+
+css frameworks are basically a whole
+
+bunch of css code that someone else
+
+wrote, and it helps us solve common
+
+problems, so using a framework like
+
+bootstrap saves us a lot of time.
+
+The last thing we're going to look at is
+
+how does the frontend communicate with
+
+the backend?
+
+For example let's say I'm on amazon and
+
+I want to make an order. How does this
+
+order get sent from my computer to
+
+amazon?
+
+Javascript has a feature for this too
+
+called XMLHttpRequest. It lets us send
+
+a message, in this case we're going to
+
+send our amazon order, to a url like
+
+amazon.com/
+
+create-order. On the other side, amazon's
+
+backend is listening for these messages
+
+sent to this url and that's how they get
+
+our order. We're going to talk more about
+
+this process in our backend video that
+
+you can find in the description.
+
+Over the years we've improved on
+
+XMLHttpRequest and these days we use tools
+
+like axios or fetch to send messages to
+
+the backend.
+
+Alright, so these are all the
+
+technologies we need to build the frontend.
+
+You'll notice that it's really just
+
+html, css, and javascript. The other
+
+technologies make css and javascript
+
+easier to work with. Let me know in the
+
+comments how many of these technologies
+
+you already knew, and if anything was new
+
+to you. Thanks for watching, my name is
+
+simon from supersimple.dev I want to
+
+make a tech career possible for anyone.
+
+You can find my contact info in the
+
+description, and I'll see you in the next
+
+one.
+
+

@@ -1,1 +1,0 @@
-This is a sample English text. It contains multiple sentences separated by periods. Each sentence will be processed and translated into Chinese. The output HTML should follow the same structure as example.html. Make sure to use the translation-block component for each sentence pair.

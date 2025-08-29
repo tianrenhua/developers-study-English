@@ -1,13 +1,13 @@
-请根据以下要求将002.txt文件转换为002.html：
+请根据以下要求将lessons/002-Original.txt文件转换为lessons/002.html：
 
-1. 读取002.txt文件内容，将英文文本按句点(.)分割成独立句子（注意处理句点后的空格）
+1. 读取lessons/002-Original.txt文件内容，将英文文本按句点(.)分割成独立句子（注意处理句点后的空格.要保留）
 2. 为每个英文句子提供准确的中文翻译
-3. 创建与example.html结构完全一致的HTML文件，包括：
+3. 创建与components/example.html结构完全一致的HTML文件，包括：
    - 完整的HTML头部（meta标签、title、Tailwind CSS、Font Awesome、translation-component.css）
    - 返回按钮和隐藏/显示按钮（使用相同的ID和class）
    - translation-container容器
    - section-title区域（标题格式为"002-标题内容"）
-   - video-link组件（title为"原视频"，url为"#"）
+   - video-link组件（title为"原视频"，url为"https://youtu.be/WG5ikvJ2TKA"）
    - content-wrapper容器（id="contentWrapper"）
    - 每个句子对使用translation-block组件，original属性为英文句子，translation属性为中文翻译
    - 句子块之间用divider分隔
