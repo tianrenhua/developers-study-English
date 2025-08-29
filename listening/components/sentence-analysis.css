@@ -1,0 +1,36 @@
+/* 句子分析样式 - 用于标记谓语和固定搭配 */
+
+/* 谓语样式 - 使用蓝色 */
+.english-predicate {
+    color: #3b82f6; /* 蓝色 */
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* 固定搭配样式 - 使用紫色 */
+.english-collocation {
+    color: #8b5cf6; /* 紫色 */
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #8b5cf6;
+    transition: all 0.2s ease;
+}
+
+/* 在翻译块中应用样式 */
+.translation-block .original-text .text-content .english-predicate {
+    color: #3b82f6;
+    display: inline;
+}
+
+.translation-block .original-text .text-content .english-collocation {
+    color: #8b5cf6;
+    display: inline;
+}
+
+/* 鼠标悬停效果 */
+.english-predicate:hover,
+.english-collocation:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
