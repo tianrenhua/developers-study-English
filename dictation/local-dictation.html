@@ -290,12 +290,248 @@
                 min-width: unset;
             }
         }
+        
+        /* Theme toggle button */
+        .header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .theme-toggle {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Light theme (default) - Warm color scheme */
+        :root {
+            --bg-color: #f8f4f0;
+            --container-bg: #ffffff;
+            --text-color: #333333;
+            --accent-color: #e67e22;
+            --border-color: #e0d6cc;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --button-primary: #e67e22;
+            --button-primary-hover: #d35400;
+            --button-secondary: #3498db;
+            --button-secondary-hover: #2980b9;
+            --button-success: #27ae60;
+            --button-success-hover: #229954;
+            --button-warning: #f39c12;
+            --button-warning-hover: #e67e22;
+            --button-info: #9b59b6;
+            --button-info-hover: #8e44ad;
+            --button-dark: #7f8c8d;
+            --button-dark-hover: #95a5a6;
+            --input-border: #d5c9bb;
+            --sentence-display-bg: #fef9f2;
+            --result-correct: #27ae60;
+            --result-incorrect: #e74c3c;
+            --progress-bg: #ede8e2;
+            --progress-fill: #e67e22;
+            --help-bg: #ffffff;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .container {
+            background-color: var(--container-bg);
+            box-shadow: 0 0 15px var(--shadow-color);
+        }
+        
+        h1 {
+            color: var(--accent-color);
+        }
+        
+        .sentence-display {
+            background-color: var(--sentence-display-bg);
+            color: var(--text-color);
+        }
+        
+        #dictation-input {
+            border: 2px solid var(--input-border);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+        }
+        
+        button {
+            background-color: var(--button-primary);
+            color: white;
+        }
+        
+        button:hover {
+            background-color: var(--button-primary-hover);
+        }
+        
+        #prev-btn {
+            background-color: var(--button-secondary);
+        }
+        
+        #prev-btn:hover {
+            background-color: var(--button-secondary-hover);
+        }
+        
+        #check-btn {
+            background-color: var(--button-warning);
+        }
+        
+        #check-btn:hover {
+            background-color: var(--button-warning-hover);
+        }
+        
+        #play-btn {
+            background-color: var(--button-info);
+        }
+        
+        #play-btn:hover {
+            background-color: var(--button-info-hover);
+        }
+        
+        #hide-btn {
+            background-color: var(--button-dark);
+        }
+        
+        #hide-btn:hover {
+            background-color: var(--button-dark-hover);
+        }
+        
+        .help-button {
+            background-color: var(--button-secondary);
+        }
+        
+        .help-button:hover {
+            background-color: var(--button-secondary-hover);
+        }
+        
+        .help-text {
+            background-color: var(--help-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .correct {
+            color: var(--result-correct);
+        }
+        
+        .incorrect {
+            color: var(--result-incorrect);
+        }
+        
+        .error-word {
+            color: var(--result-incorrect);
+        }
+        
+        .progress-bar {
+            background-color: var(--progress-bg);
+        }
+        
+        .progress-fill {
+            background-color: var(--progress-fill);
+        }
+        
+        .progress-text {
+            color: var(--text-color);
+        }
+        
+        .progress-input {
+            border: 1px solid var(--input-border);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+        }
+        
+        .go-to-button {
+            background-color: var(--button-secondary);
+        }
+        
+        .go-to-button:hover {
+            background-color: var(--button-secondary-hover);
+        }
+        
+        /* Dark theme */
+        .dark-theme {
+            --bg-color: #1a1a1a;
+            --container-bg: #2d2d2d;
+            --text-color: #f0f0f0;
+            --accent-color: #e67e22;
+            --border-color: #444444;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --button-primary: #e67e22;
+            --button-primary-hover: #d35400;
+            --button-secondary: #3498db;
+            --button-secondary-hover: #5dade2;
+            --button-success: #27ae60;
+            --button-success-hover: #58d68d;
+            --button-warning: #f39c12;
+            --button-warning-hover: #f5b041;
+            --button-info: #9b59b6;
+            --button-info-hover: #bb8fce;
+            --button-dark: #7f8c8d;
+            --button-dark-hover: #95a5a6;
+            --input-border: #555555;
+            --sentence-display-bg: #3a3a3a;
+            --result-correct: #58d68d;
+            --result-incorrect: #ec7063;
+            --progress-bg: #444444;
+            --progress-fill: #e67e22;
+            --help-bg: #2d2d2d;
+        }
+        
+        .dark-theme .container {
+            box-shadow: 0 0 15px var(--shadow-color);
+        }
+        
+        .dark-theme h1 {
+            color: var(--accent-color);
+        }
+        
+        .dark-theme .sentence-display {
+            background-color: var(--sentence-display-bg);
+            color: var(--text-color);
+        }
+        
+        .dark-theme #dictation-input {
+            border: 2px solid var(--input-border);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+        }
+        
+        .dark-theme .help-text {
+            background-color: var(--help-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .dark-theme .progress-input {
+            border: 1px solid var(--input-border);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>英语句子听写应用</h1>
-        <button id="help-btn" class="help-button">使用方法</button>
+        <div class="header-controls">
+            <button id="help-btn" class="help-button">使用方法</button>
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+        </div>
         <div id="help-text" class="help-text hidden">
             <h3>使用方法</h3>
             <ol>
@@ -405,6 +641,7 @@
         const helpText = document.getElementById('help-text');
         const progressInput = document.getElementById('progress-input');
         const goToButton = document.getElementById('go-to-sentence');
+        const themeToggle = document.getElementById('theme-toggle');
         
         // Event listeners
         videoFileInput.addEventListener('change', handleVideoFileUpload);
@@ -417,6 +654,7 @@
         resetBtn.addEventListener('click', resetApp);
         helpBtn.addEventListener('click', toggleHelpText);
         goToButton.addEventListener('click', goToSentence);
+        themeToggle.addEventListener('click', toggleTheme);
         progressInput.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 goToSentence();
@@ -838,6 +1076,40 @@
             // Auto-play the sentence after a short delay to ensure UI is updated
             setTimeout(playCurrentSentence, 300);
         }
+        
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkTheme = body.classList.contains('dark-theme');
+            
+            if (isDarkTheme) {
+                // Switch to light theme
+                body.classList.remove('dark-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switch to dark theme
+                body.classList.add('dark-theme');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Initialize theme based on saved preference or system preference
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.classList.add('dark-theme');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
+        
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', initializeTheme);
     </script>
 </body>
 </html>
