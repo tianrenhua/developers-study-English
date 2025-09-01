@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语句子听写应用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .upload-section {
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .upload-group {
+            text-align: center;
+            min-width: 200px;
+        }
+        .upload-group input {
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .upload-group p {
+            margin: 0;
+        }
+        /* Side-by-side layout for video and input with 3:2 ratio */
+        .content-layout {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .video-section {
+            flex: 3; /* 3 parts for video */
+            min-width: 300px;
+        }
+        .input-section {
+            flex: 2; /* 2 parts for input */
+            min-width: 200px;
+        }
+        .video-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .sentence-display {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9f7fe;
+            border-radius: 5px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #dictation-input {
+            width: 100%;
+            height: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .button-group {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .button-group.top {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+                button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Help button and text styles */
+        .help-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .help-button:hover {
+            background-color: #1976D2;
+        }
+        
+        .help-text {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        .help-text.hidden {
+            display: none;
+        }
+        
+        .help-text h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .help-text ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .help-text li {
+            margin-bottom: 8px;
+        }
+        #prev-btn {
+            background-color: #2196F3;
+        }
+        #prev-btn:hover {
+            background-color: #1976D2;
+        }
+        #check-btn {
+            background-color: #FF9800;
+        }
+        #check-btn:hover {
+            background-color: #F57C00;
+        }
+        #play-btn {
+            background-color: #9C27B0;
+        }
+        #play-btn:hover {
+            background-color: #7B1FA2;
+        }
+        #hide-btn {
+            background-color: #607D8B;
+        }
+        #hide-btn:hover {
+            background-color: #455A64;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+            min-height: 30px;
+            line-height: 1.5;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        .error-word {
+            color: red;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .placeholder {
+            color: #999;
+        }
+        /* Styled progress bar */
+        .progress-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .progress-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .progress-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+        }
+        .progress-input-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .progress-input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .go-to-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .go-to-button:hover {
+            background-color: #1976D2;
+        }
+        .go-to-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .file-info {
+            text-align: center;
+            margin: 10px 0;
+            color: #666;
+        }
+        .subtitle-timing {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .content-layout {
+                flex-direction: column;
+            }
+            .video-section, .input-section {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>英语句子听写应用</h1>
+        <button id="help-btn" class="help-button">使用方法</button>
+        <div id="help-text" class="help-text hidden">
+            <h3>使用方法</h3>
+            <ol>
+                <li>点击"上传视频文件"按钮上传.mp4格式的视频文件</li>
+                <li>点击"上传字幕文件"按钮上传.srt格式的字幕文件</li>
+                <li>点击"播放"按钮播放当前句子或使用快捷键`（反引号）</li>
+                <li>在文本框中输入您听到的句子</li>
+                <li>点击"检查答案"按钮查看结果</li>
+                <li>使用"上一句"和"下一句"按钮导航到不同句子</li>
+                <li>点击"隐藏/显示正确句子"按钮切换正确答案的显示</li>
+                <li>点击"重置所有"按钮清除所有内容并重新开始</li>
+            </ol>
+        </div>
+        
+        <div class="upload-section">
+            <div class="upload-group">
+                <input type="file" id="video-file-input" accept=".mp4">
+                <p>上传视频文件 (.mp4 格式)</p>
+            </div>
+            <div class="upload-group">
+                <input type="file" id="subtitle-file-input" accept=".srt">
+                <p>上传字幕文件 (.srt 格式)</p>
+            </div>
+            <div class="file-info" id="file-info"></div>
+        </div>
+        
+        <!-- Side-by-side layout for video and input with 3:2 ratio -->
+        <div class="content-layout">
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="video-player" controls>
+                        您的浏览器不支持视频播放。
+                    </video>
+                    <div class="subtitle-timing" id="subtitle-timing"></div>
+                </div>
+                
+                <!-- Buttons and sentence display below video player -->
+                <div class="button-group top">
+                    <button id="hide-btn">隐藏/显示正确句子</button>
+                    <button id="reset-btn">重置所有</button>
+                </div>
+                
+                <div class="sentence-display" id="sentence-display">
+                    请上传视频和字幕文件开始听写
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <!-- Styled progress bar above dictation input -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-control">
+                        <span class="progress-text" id="progress-text">句子 0 / 0</span>
+                        <div class="progress-input-container">
+                            <input type="number" id="progress-input" class="progress-input" min="1" value="1">
+                            <button id="go-to-sentence" class="go-to-button">跳转</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-box">
+                    <textarea id="dictation-input" placeholder="在此输入您听到的句子..."></textarea>
+                </div>
+                
+                <!-- Grading result display below dictation input -->
+                <div class="result" id="result"></div>
+                
+                <!-- Navigation buttons below grading result -->
+                <div class="button-group">
+                    <button id="prev-btn" disabled>上一句</button>
+                    <button id="play-btn" disabled>播放</button>
+                    <button id="check-btn" disabled>检查答案</button>
+                    <button id="next-btn" disabled>下一句</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let sentences = [];
+        let currentSentenceIndex = 0;
+        let userAnswers = [];
+        let subtitles = [];
+        let isSentenceHidden = false;
+        
+        // DOM elements
+        const videoFileInput = document.getElementById('video-file-input');
+        const subtitleFileInput = document.getElementById('subtitle-file-input');
+        const videoPlayer = document.getElementById('video-player');
+        const sentenceDisplay = document.getElementById('sentence-display');
+        const dictationInput = document.getElementById('dictation-input');
+        const prevBtn = document.getElementById('prev-btn');
+        const playBtn = document.getElementById('play-btn');
+        const checkBtn = document.getElementById('check-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const hideBtn = document.getElementById('hide-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const resultDiv = document.getElementById('result');
+        const progressText = document.getElementById('progress-text');
+        const progressFill = document.getElementById('progress-fill');
+        const fileInfoDiv = document.getElementById('file-info');
+        const subtitleTimingDiv = document.getElementById('subtitle-timing');
+        const helpBtn = document.getElementById('help-btn');
+        const helpText = document.getElementById('help-text');
+        const progressInput = document.getElementById('progress-input');
+        const goToButton = document.getElementById('go-to-sentence');
+        
+        // Event listeners
+        videoFileInput.addEventListener('change', handleVideoFileUpload);
+        subtitleFileInput.addEventListener('change', handleSubtitleFileUpload);
+        prevBtn.addEventListener('click', showPreviousSentence);
+        playBtn.addEventListener('click', playCurrentSentence);
+        checkBtn.addEventListener('click', checkAnswer);
+        nextBtn.addEventListener('click', showNextSentence);
+        hideBtn.addEventListener('click', toggleSentenceVisibility);
+        resetBtn.addEventListener('click', resetApp);
+        helpBtn.addEventListener('click', toggleHelpText);
+        goToButton.addEventListener('click', goToSentence);
+        progressInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                goToSentence();
+            }
+        });
+        
+        // Keyboard event listener for play button shortcut
+        document.addEventListener('keydown', function(event) {
+            // Check if Ctrl key is pressed along with another key
+            if (event.ctrlKey && !playBtn.disabled) {
+                // Check if the key is a valid trigger (we'll use 'p' for play)
+                if (event.key === 'p' || event.key === 'P') {
+                    event.preventDefault();
+                    playCurrentSentence();
+                }
+            }
+            // Check for backtick key (`)
+            if (event.key === '`' && !playBtn.disabled) {
+                event.preventDefault();
+                playCurrentSentence();
+            }
+        });
+        
+        // Handle video file upload
+        function handleVideoFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const url = URL.createObjectURL(file);
+            videoPlayer.src = url;
+            fileInfoDiv.innerHTML += `<div>视频文件已加载: ${file.name}</div>`;
+            enableVideoButtons();
+        }
+        
+        // Handle subtitle file upload
+        function handleSubtitleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                processSubtitles(content);
+                fileInfoDiv.innerHTML += `<div>字幕文件已加载: ${file.name}</div>`;
+            };
+            reader.readAsText(file);
+        }
+        
+        // Process subtitle content and extract sentences
+        function processSubtitles(srtContent) {
+            subtitles = [];
+            sentences = [];
+            const lines = srtContent.split('\n');
+            let i = 0;
+            
+            while (i < lines.length) {
+                const line = lines[i].trim();
+                
+                // Check if line is a number (subtitle index)
+                if (/^\d+$/.test(line)) {
+                    i++;
+                    if (i >= lines.length) break;
+                    
+                    // Get timing line
+                    const timingLine = lines[i].trim();
+                    i++;
+                    if (i >= lines.length) break;
+                    
+                    // Get subtitle text
+                    let subtitleText = '';
+                    while (i < lines.length && lines[i].trim() !== '') {
+                        if (subtitleText !== '') subtitleText += ' ';
+                        subtitleText += lines[i].trim();
+                        i++;
+                    }
+                    
+                    // Parse timing
+                    if (timingLine.includes('-->')) {
+                        const times = timingLine.split('-->');
+                        if (times.length >= 2) {
+                            const startTime = parseTime(times[0].trim());
+                            const endTime = parseTime(times[1].trim());
+                            subtitles.push({
+                                start: startTime,
+                                end: endTime,
+                                text: subtitleText
+                            });
+                            // Add sentence to sentences array
+                            sentences.push(subtitleText.trim());
+                        }
+                    }
+                } else {
+                    i++;
+                }
+            }
+            
+            // Initialize user answers array
+            userAnswers = new Array(sentences.length).fill('');
+            
+            if (sentences.length > 0) {
+                currentSentenceIndex = 0;
+                displaySentence();
+                updateProgress();
+                enableButtons();
+            } else {
+                sentenceDisplay.textContent = "字幕中未找到句子。";
+                disableButtons();
+            }
+        }
+        
+        // Parse time in format HH:MM:SS,mmm
+        function parseTime(timeStr) {
+            const parts = timeStr.split(/[:,]/);
+            if (parts.length >= 3) {
+                const hours = parseInt(parts[0]) || 0;
+                const minutes = parseInt(parts[1]) || 0;
+                const seconds = parseInt(parts[2]) || 0;
+                const milliseconds = parseInt(parts[3]) || 0;
+                return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
+            }
+            return 0;
+        }
+        
+        // Display current sentence
+        function displaySentence() {
+            if (sentences.length > 0 && currentSentenceIndex < sentences.length) {
+                const sentence = sentences[currentSentenceIndex];
+                if (isSentenceHidden) {
+                    sentenceDisplay.textContent = "句子已隐藏";
+                    sentenceDisplay.setAttribute('data-original', sentence);
+                } else {
+                    sentenceDisplay.textContent = sentence;
+                }
+                resultDiv.innerHTML = '';
+                resultDiv.className = 'result';
+                updateSubtitleTiming();
+            }
+        }
+        
+        // Update subtitle timing display
+        function updateSubtitleTiming() {
+            if (subtitles.length > 0 && currentSentenceIndex < subtitles.length) {
+                const subtitle = subtitles[currentSentenceIndex];
+                if (subtitle) {
+                    const start = formatTime(subtitle.start);
+                    const end = formatTime(subtitle.end);
+                    subtitleTimingDiv.textContent = `时间: ${start} --> ${end}`;
+                } else {
+                    subtitleTimingDiv.textContent = '';
+                }
+            } else {
+                subtitleTimingDiv.textContent = '';
+            }
+        }
+        
+        // Format time as HH:MM:SS
+        function formatTime(seconds) {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = Math.floor(seconds % 60);
+            return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+        
+        // Update progress display with styled progress bar
+        function updateProgress() {
+            if (sentences.length > 0) {
+                const current = currentSentenceIndex + 1;
+                const total = sentences.length;
+                const percentage = (current / total) * 100;
+                
+                progressText.textContent = `句子 ${current} / ${total}`;
+                progressFill.style.width = `${percentage}%`;
+                progressInput.max = total;
+                progressInput.value = current;
+            } else {
+                progressText.textContent = '句子 0 / 0';
+                progressFill.style.width = '0%';
+                progressInput.max = 1;
+                progressInput.value = 1;
+            }
+        }
+        
+        // Enable navigation buttons
+        function enableButtons() {
+            checkBtn.disabled = false;
+            updateNavigationButtons();
+        }
+        
+        // Enable video buttons
+        function enableVideoButtons() {
+            playBtn.disabled = false;
+        }
+        
+        // Disable all buttons
+        function disableButtons() {
+            prevBtn.disabled = true;
+            playBtn.disabled = true;
+            checkBtn.disabled = true;
+            nextBtn.disabled = true;
+        }
+        
+        // Update navigation buttons based on current position
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentSentenceIndex === 0;
+            nextBtn.disabled = currentSentenceIndex >= sentences.length - 1;
+        }
+        
+        // Show previous sentence
+        function showPreviousSentence() {
+            saveCurrentAnswer();
+            if (currentSentenceIndex > 0) {
+                currentSentenceIndex--;
+                displaySentence();
+                updateProgress();
+                updateNavigationButtons();
+                // Clear input when navigating to previous sentence
+                dictationInput.value = userAnswers[currentSentenceIndex] || '';
+            }
+        }
+        
+        // Show next sentence, auto-play, and clear input
+        function showNextSentence() {
+            saveCurrentAnswer();
+            if (currentSentenceIndex < sentences.length - 1) {
+                currentSentenceIndex++;
+                displaySentence();
+                updateProgress();
+                updateNavigationButtons();
+                // Clear input when navigating to next sentence
+                dictationInput.value = '';
+                // Auto-play the next sentence
+                setTimeout(playCurrentSentence, 500);
+            }
+        }
+        
+        // Play current sentence
+        function playCurrentSentence() {
+            if (subtitles.length > 0 && currentSentenceIndex < subtitles.length) {
+                const subtitle = subtitles[currentSentenceIndex];
+                if (subtitle) {
+                    videoPlayer.currentTime = subtitle.start;
+                    videoPlayer.play();
+                    
+                    // Pause at the end of the subtitle
+                    const checkTime = function() {
+                        if (videoPlayer.currentTime >= subtitle.end) {
+                            videoPlayer.pause();
+                            videoPlayer.removeEventListener('timeupdate', checkTime);
+                        } else {
+                            requestAnimationFrame(checkTime);
+                        }
+                    };
+                    videoPlayer.addEventListener('timeupdate', checkTime);
+                }
+            }
+        }
+        
+        // Toggle sentence visibility
+        function toggleSentenceVisibility() {
+            if (sentences.length > 0 && currentSentenceIndex < sentences.length) {
+                isSentenceHidden = !isSentenceHidden;
+                displaySentence();
+            }
+        }
+        
+        // Save current answer
+        function saveCurrentAnswer() {
+            if (sentences.length > 0) {
+                userAnswers[currentSentenceIndex] = dictationInput.value;
+            }
+        }
+        
+        // Check user's answer with detailed word-by-word grading
+        function checkAnswer() {
+            if (sentences.length === 0) return;
+            
+            const userAnswer = dictationInput.value.trim();
+            const correctAnswer = sentences[currentSentenceIndex].trim();
+            
+            // Save the answer
+            userAnswers[currentSentenceIndex] = userAnswer;
+            
+            // Compare answers with detailed word-by-word grading
+            const result = compareAnswersDetailed(userAnswer, correctAnswer);
+            resultDiv.innerHTML = result;
+            resultDiv.className = 'result';
+        }
+        
+        // Detailed word-by-word comparison (ignoring extra spaces)
+        function compareAnswersDetailed(userAnswer, correctAnswer) {
+            // Normalize both answers by trimming and collapsing multiple spaces to single spaces
+            const normalizedUserAnswer = userAnswer.trim().replace(/\s+/g, ' ');
+            const normalizedCorrectAnswer = correctAnswer.trim().replace(/\s+/g, ' ');
+            
+            // Split both sentences into words
+            const userWords = normalizedUserAnswer.split(' ').filter(word => word.length > 0);
+            const correctWords = normalizedCorrectAnswer.split(' ').filter(word => word.length > 0);
+            
+            // If user answer is empty
+            if (userWords.length === 0) {
+                return `答案为空`;
+            }
+            
+            // If answers match exactly (case insensitive)
+            if (normalizedUserAnswer.toLowerCase() === normalizedCorrectAnswer.toLowerCase()) {
+                // Show complete correct sentence when user answers correctly
+                return `<span class="correct">正确！做得好。<br>完整句子: "${correctAnswer}"</span>`;
+            }
+            
+            // Create detailed comparison
+            let resultHtml = '';
+            let foundFirstError = false;
+            
+            // Compare word by word
+            const maxLength = Math.max(userWords.length, correctWords.length);
+            
+            for (let i = 0; i < maxLength; i++) {
+                if (i < userWords.length && i < correctWords.length) {
+                    // Both have words at this position
+                    const userWord = userWords[i];
+                    const correctWord = correctWords[i];
+                    
+                    if (userWord.toLowerCase() === correctWord.toLowerCase()) {
+                        // Words match
+                        if (foundFirstError) {
+                            // After first error, show correct words as placeholders
+                            resultHtml += `<span class="placeholder">**</span> `;
+                        } else {
+                            // Before first error, show correct words normally
+                            resultHtml += `${correctWord} `;
+                        }
+                    } else {
+                        // Words don't match - this is an error
+                        if (!foundFirstError) {
+                            // First error
+                            foundFirstError = true;
+                            resultHtml += `<span class="error-word">${userWord}</span> `;
+                        } else {
+                            // Subsequent errors are not shown as per requirements
+                            resultHtml += `<span class="placeholder">**</span> `;
+                        }
+                    }
+                } else if (i < userWords.length) {
+                    // User has extra words
+                    if (!foundFirstError) {
+                        foundFirstError = true;
+                        resultHtml += `<span class="error-word">${userWords[i]}</span> `;
+                    } else {
+                        resultHtml += `<span class="placeholder">**</span> `;
+                    }
+                } else {
+                    // Correct answer has extra words
+                    if (foundFirstError) {
+                        resultHtml += `<span class="placeholder">**</span> `;
+                    } else {
+                        resultHtml += `${correctWords[i]} `;
+                    }
+                }
+            }
+            
+            return resultHtml.trim();
+        }
+        
+        // Reset the application
+        function resetApp() {
+            sentences = [];
+            currentSentenceIndex = 0;
+            userAnswers = [];
+            subtitles = [];
+            isSentenceHidden = false;
+            
+            sentenceDisplay.textContent = '请上传视频和字幕文件开始听写';
+            sentenceDisplay.removeAttribute('data-original');
+            dictationInput.value = '';
+            resultDiv.innerHTML = '';
+            resultDiv.className = 'result';
+            progressText.textContent = '句子 0 / 0';
+            progressFill.style.width = '0%';
+            fileInfoDiv.innerHTML = '';
+            subtitleTimingDiv.textContent = '';
+            
+            disableButtons();
+            videoFileInput.value = '';
+            subtitleFileInput.value = '';
+            videoPlayer.src = '';
+        }
+        
+        // Toggle help text visibility
+        function toggleHelpText() {
+            helpText.classList.toggle('hidden');
+        }
+        
+        // Go to specific sentence
+        function goToSentence() {
+            // Save current answer first
+            saveCurrentAnswer();
+            
+            // Get input value and validate
+            const inputVal = parseInt(progressInput.value);
+            const totalSentences = sentences.length;
+            
+            // Validate input
+            if (isNaN(inputVal) || inputVal < 1 || inputVal > totalSentences) {
+                alert('请输入有效的句子编号 (1-' + totalSentences + ')');
+                return;
+            }
+            
+            // Update current sentence index (0-based)
+            currentSentenceIndex = inputVal - 1;
+            
+            // Display sentence and update UI
+            displaySentence();
+            updateProgress();
+            updateNavigationButtons();
+            
+            // Clear input when navigating to new sentence
+            dictationInput.value = userAnswers[currentSentenceIndex] || '';
+            
+            // Auto-play the sentence after a short delay to ensure UI is updated
+            setTimeout(playCurrentSentence, 300);
+        }
+    </script>
+</body>
+</html>
